@@ -25,7 +25,7 @@ section#score {
 section#score h2 {
     margin: 0;
     text-align: center;
-    font-size: 23px;
+    font-size: 20px;
     font-weight: 600;
     display: inline;
 }
@@ -38,7 +38,7 @@ section#score p#winnerCondition {
 
 section#score p#moves {
     margin-top: 20px;
-    font-size: 25px;
+    font-size: 18px;
     display: inline;
 }
 
@@ -102,23 +102,25 @@ div#box4 {
 div#box3 {
     width: 70px;
     background-color: #764888;
+    font-size: 12px;
 }
 
 div#box2 {
     width: 90px;
     background-color: #82bb41;
-    padding: 8px 0;
+    font-size: 12px;    
 }
 
 div#box1 {
     width: 110px;
     background-color: #bb4141;
-    padding: 7px;
+    font-size: 13px;
+    padding: 3px 0;
 }
 
 button#reset {
-    float: right;
-    margin-right: 20px;
+    float: right;  
+    margin-top: 50px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -178,14 +180,20 @@ button#reset:active {
     }
     div#box1 {
         width: 150px;
+        padding: 7px;
     }
     div#box2 {
         width: 120px;
+        padding: 8px 0;
     }
     div#box3 {
         width: 90px;
     }
     div#box4 {
         width: 60px;
+    }
+
+    button#reset {        
+        margin-right: 20px;
     }
 }

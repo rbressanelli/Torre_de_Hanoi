@@ -109,13 +109,13 @@ function gameScore() {
 
 function checkWinner() {
     if (coluna2.childElementCount === 4 && score === 15) {
-        placar.innerText = 'Parabéns!! Você venceu!!';
+        placar.innerText = 'Parabéns!!';
         placar.className = 'winnerDisplay';
         coluna0.removeEventListener('click', handleClick);
         coluna1.removeEventListener('click', handleClick);
         coluna2.removeEventListener('click', handleClick);
     } else if (coluna2.childElementCount === 4 && score > 15) {
-        placar.innerText = 'Desta vez não deu!!'
+        placar.innerText = 'Tente de novo!!'
         coluna0.removeEventListener('click', handleClick);
         coluna1.removeEventListener('click', handleClick);
         coluna2.removeEventListener('click', handleClick);
