@@ -3,6 +3,7 @@ let destino = '';
 let bloco = '';
 let mode = false;
 let score = 0;
+let choose = true;
 
 const container = document.getElementById('container');
 const placar = document.getElementById('moves');
@@ -19,7 +20,6 @@ let coluna1 = document.getElementById('coluna1');
 let coluna2 = document.getElementById('coluna2');
 
 
-
 function resetGame() {
     origem = '';
     destino = '';
@@ -27,6 +27,7 @@ function resetGame() {
     mode = false;
     score = 0;
     placar.innerText = score;
+    placar.className = '';
 
     piecesGenerator();
     coluna0.addEventListener('click', handleClick);
@@ -58,14 +59,15 @@ function piecesGenerator() {
 
 function handleClick(event) {
     if (!mode) {
-        if (origem === '') {
+        if (origem === '' && choose) {
+            console.log('oi')
             origem = event.currentTarget.id;
             bloco = event.currentTarget.lastElementChild;
-            bloco.className = 'choosed';
-            bloco.innerHTML = '';
+            bloco.className = 'choosed shadow';                                 
         } else if (destino === '') {
             destino = event.currentTarget.id;
-            mode = true;
+            mode = true; 
+            choose = true;                       
         }
     }
 
@@ -75,6 +77,7 @@ function handleClick(event) {
             origem = '';
             destino = '';
             mode = false;
+            choose = false;
         }
     }
 
@@ -85,6 +88,7 @@ function handleClick(event) {
 
 function select(arg1, arg2) {
     if (arg1 !== null && arg2 !== null) {
+        arg2.innerHTML = '';
         let selecao = document.getElementById(arg1);
         selecao.appendChild(arg2);
         arg2.className = '';
@@ -104,6 +108,8 @@ function gameScore() {
     if (origem !== destino) {
         score += 1;
         placar.innerText = score;
+    } else {
+        score += 0;        
     }
 }
 

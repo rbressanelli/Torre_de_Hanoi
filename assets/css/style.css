@@ -59,13 +59,14 @@ header h1 {
 }
 
 div.colunas {
-    width: 15px;
+    width: 10px;
     height: 120px;
+    border-radius: 5px;
     background-color: #000;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    cursor: pointer;
+    cursor: pointer;    
 }
 
 div#coluna0 {
@@ -91,12 +92,16 @@ div#box4 {
     text-align: center;
     font-variant: small-caps;
     font-weight: 700;
-    font-size: 14px;    
+    font-size: 14px;     
 }
 
 div#box4 {
     width: 50px;
-    background-color: #4e68c0;
+    background-color: #4e68c0;     
+}
+
+div#box4.shadow {
+    box-shadow: 0px 0px 10px 2px #4e68c0;
 }
 
 div#box3 {
@@ -105,10 +110,18 @@ div#box3 {
     font-size: 12px;
 }
 
+div#box3.shadow {
+    box-shadow: 0px 0px 10px 2px #764888;
+}
+
 div#box2 {
     width: 90px;
     background-color: #82bb41;
     font-size: 12px;    
+}
+
+div#box2.shadow {
+    box-shadow: 0px 0px 10px 2px #82bb41;
 }
 
 div#box1 {
@@ -118,6 +131,10 @@ div#box1 {
     padding: 3px 0;
 }
 
+div#box1.shadow {
+    box-shadow: 0px 0px 10px 2px #bb4141;
+}
+
 button#reset {
     float: right;  
     margin-top: 40px;
@@ -125,20 +142,22 @@ button#reset {
     border-radius: 5px;
     border: 1px solid #ccc;
     background-color: #fff;
-    color: #155174;
+    color: #0b4a6e;
     text-transform: uppercase;
-    box-shadow: 1px 5px 10px 0px #000;    
+    box-shadow: 1px 5px 10px 0px #000;
+    transition: 0.15s;       
 }
 
 button#reset:active {
     transform: translateY(5px);
-    box-shadow: 0px 2px 5px #000;
+    box-shadow: 0px 2px 3px #000;
+    transition: 0.15s;   
 }
 
 .choosed{
-    transform: scale(1.2);
-    opacity: 90%;
-    box-shadow: 0px 0px 23px 5px #aca2a2c9;
+    transform: scale(1.2);    
+    opacity: 95%;    
+    transition: 0.3s;
 }
 
 
@@ -168,7 +187,7 @@ button#reset:active {
         margin-left: 30%;
     }
     div.colunas {
-        width: 15px;
+        width: 10px;
         height: 200px;
     }
     div#box1,
