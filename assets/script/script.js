@@ -4,21 +4,30 @@ let bloco = '';
 let mode = false;
 let score = 0;
 let choose = true;
+let coluna0;
+let coluna1;
+let coluna2;
 
 const container = document.getElementById('container');
 const placar = document.getElementById('moves');
+const reset = document.getElementById('reset');
+reset.addEventListener('click', resetGame);
 
-for (let i = 0; i < 3; i++) {
+function generateColumns () {
+    for (let i = 0; i < 3; i++) {
     const elemento = document.createElement('div');
-    elemento.className = 'colunas';
+    elemento.classList.add('colunas');
     container.appendChild(elemento);
     elemento.id = 'coluna' + `${i}`;
+    }
+    coluna0 = document.getElementById('coluna0');
+    coluna1 = document.getElementById('coluna1');
+    coluna2 = document.getElementById('coluna2');
 }
 
-let coluna0 = document.getElementById('coluna0');
-let coluna1 = document.getElementById('coluna1');
-let coluna2 = document.getElementById('coluna2');
+generateColumns();
 
+resetGame();
 
 function resetGame() {
     origem = '';
@@ -59,8 +68,7 @@ function piecesGenerator() {
 
 function handleClick(event) {
     if (!mode) {
-        if (origem === '' && choose) {
-            console.log('oi')
+        if (origem === '' && choose) {            
             origem = event.currentTarget.id;
             bloco = event.currentTarget.lastElementChild;
             bloco.className = 'choosed shadow';                                 
@@ -71,27 +79,19 @@ function handleClick(event) {
         }
     }
 
-    if (bloco !== null && event.currentTarget.lastElementChild !== null) {
-        if (bloco.clientWidth > event.currentTarget.lastElementChild.clientWidth) {
-            bloco.innerHTML = 'movimento inválido'
-            origem = '';
-            destino = '';
-            mode = false;
-            choose = false;
-        }
-    }
+    checkMove();   
 
     if (mode) {
         select(destino, bloco);
     }
 }
 
-function select(arg1, arg2) {
-    if (arg1 !== null && arg2 !== null) {
-        arg2.innerHTML = '';
-        let selecao = document.getElementById(arg1);
-        selecao.appendChild(arg2);
-        arg2.className = '';
+function select(dest, bloco) {
+    if (dest !== null && bloco !== null) {
+        bloco.innerHTML = '';
+        let selecao = document.getElementById(dest);
+        selecao.appendChild(bloco);
+        bloco.className = '';
         gameScore();
         checkWinner();
         mode = false;
@@ -119,14 +119,25 @@ function checkWinner() {
         placar.className = 'winnerDisplay';
         coluna0.removeEventListener('click', handleClick);
         coluna1.removeEventListener('click', handleClick);
-        coluna2.removeEventListener('click', handleClick);
+        coluna2.removeEventListener('click', handleClick);        
     } else if (coluna2.childElementCount === 4 && score > 15) {
         placar.innerText = 'Tente de novo!!'
         coluna0.removeEventListener('click', handleClick);
         coluna1.removeEventListener('click', handleClick);
-        coluna2.removeEventListener('click', handleClick);
+        coluna2.removeEventListener('click', handleClick);      
     }
 }
-resetGame();
-const reset = document.getElementById('reset');
-reset.addEventListener('click', resetGame);
+
+function checkMove () {
+    if (bloco !== null && event.currentTarget.lastElementChild !== null) {
+        if (bloco.clientWidth > event.currentTarget.lastElementChild.clientWidth) {
+            bloco.innerHTML = 'movimento inválido'
+            origem = '';
+            destino = '';
+            mode = false;
+            choose = false;
+        }
+    }
+}
+
+
